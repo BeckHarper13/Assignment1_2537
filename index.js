@@ -51,7 +51,7 @@ app.use(session({
 app.use(express.urlencoded({extended: false}));
 
 var users = [];
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     var logged = req.query.login;
     var name = req.session.username;
     if (logged){
@@ -163,7 +163,7 @@ app.post('/submitUser', async (req,res) => {
 	await userCollection.insertOne({username: username, email: email, password: hashedPassword});
 	console.log("Inserted user");
 
-    res.redirect('/home');
+    res.redirect('/');
     return//res.redirect('/home');
 
     /*
@@ -195,7 +195,7 @@ app.get('/login', (req,res) => {
     <button>Submit</button>
     </form>
 
-    <form action='/home' method='get'>
+    <form action='/' method='get'>
     <button>Back to Home</button>
     </form>
     `;
@@ -230,7 +230,7 @@ app.post('/loggingin', async (req,res) => {
 		req.session.username = username;
 		req.session.cookie.maxAge = expireTime;
 
-		res.redirect('/home?login=1');
+		res.redirect('/?login=1');
 		return;
 	}
 	else {
