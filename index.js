@@ -286,7 +286,7 @@ app.get('/members', (req,res) => {
         res.send(html);
 
     } else {
-        res.redirect('/home');
+        res.redirect('/');
 
     }
     
