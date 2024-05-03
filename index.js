@@ -36,7 +36,7 @@ var {database} = include('databaseConnection');
 
 const userCollection = database.db(mongodb_database).collection('users');
 
-const expireTime = 24 * 60 * 60 * 1000;
+const expireTime =  60 * 60 * 1000;
 
 
 app.use(session({
@@ -259,7 +259,7 @@ app.post('/loggingin', async (req,res) => {
 
 app.get('/logout', (req,res) => {
 	req.session.destroy();
-    res.redirect('/home');
+    res.redirect('/');
     
 });
 
